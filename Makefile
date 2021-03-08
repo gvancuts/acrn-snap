@@ -4,7 +4,7 @@ ifeq ($(UC_MODEL_NAME),)
 $(error Model assertion name 'UC_MODEL_NAME' must be specified in config.mk)
 endif
 ifeq ($(SNAP_SIGNING_KEY),)
-$(error No siging key 'SNAP_SIGNING_KEY' is specified)
+$(error No signing key 'SNAP_SIGNING_KEY' is specified)
 endif
 
 GADGET_DIR  ?= gadget
