@@ -1,5 +1,5 @@
 name: acrn
-version: 2.3.0-core20
+version: 2.4.0-core20
 type: gadget
 base: core20
 summary: ACRN PC gadget
@@ -24,11 +24,12 @@ parts:
     # Install build tools and dependencies required by ACRN development
     # https://projectacrn.github.io/2.3/getting-started/building-from-source.html
     build-packages: [ gcc, git, make, libssl-dev, libpciaccess-dev, uuid-dev,
-                      libsystemd-dev, libevent-dev, libxml2-dev, libusb-1.0-0-dev,
-                      python3, python3-pip, libblkid-dev, e2fslibs-dev, pkg-config,
-                      libnuma-dev, liblz4-tool, flex, bison ]
+                      libsystemd-dev, libevent-dev, libxml2-dev, libxml2-utils,
+                      libusb-1.0-0-dev, python3, python3-pip, libblkid-dev,
+                      e2fslibs-dev, pkg-config, libnuma-dev, liblz4-tool, flex,
+                      bison, xsltproc ]
     plugin: python
-    python-packages: [ kconfiglib ]
+    python-packages: [ lxml, xmlschema ]
     stage-packages: [ grub-efi-amd64-signed, grub-pc-bin, shim-signed ]
     prime: [ -* ]
 
@@ -45,9 +46,9 @@ parts:
   acrn:
     after: [ iasl ]
     plugin: make
-    source: https://github.com/projectacrn/acrn-hypervisor.git
-    source-tag: v2.3
-    make-parameters: [ RELEASE=0 ]
+    source: https://github.com/gvancuts/acrn-hypervisor.git
+    source-branch: vm_console
+    make-parameters: [ BOARD=nuc7i7dnb SCENARIO=industry RELEASE=n ]
     stage-packages: [ libpciaccess-dev, libusb-1.0-0 ]
     override-prime: |
       snapcraftctl prime
