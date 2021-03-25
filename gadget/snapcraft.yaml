@@ -1,7 +1,7 @@
 name: acrn
-version: 2.3.0-core18
+version: 2.3.0-core20
 type: gadget
-base: core18
+base: core20
 summary: ACRN PC gadget
 description: |
   PC gadget for ACRN devices.
@@ -52,6 +52,7 @@ parts:
     override-prime: |
       snapcraftctl prime
       install -D $SNAPCRAFT_PART_SRC/../build/build/hypervisor/acrn.bin boot/acrn/acrn.bin
+      install -D $SNAPCRAFT_PART_SRC/../build/build/hypervisor/acrn.out boot/acrn/acrn.out
 
   grub:
     after: [ build-environ ]
