@@ -47,7 +47,7 @@ parts:
     after: [ iasl ]
     plugin: make
     source: https://github.com/gvancuts/acrn-hypervisor.git
-    source-branch: vm_console
+    source-branch: large-initrd
     make-parameters: [ BOARD=nuc7i7dnb SCENARIO=industry RELEASE=n ]
     stage-packages: [ libpciaccess-dev, libusb-1.0-0 ]
     override-prime: |
